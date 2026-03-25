@@ -20,7 +20,7 @@
         body { font-family: 'Open Sans', sans-serif; color: var(--dark-navy); overflow-x: hidden; }
         h1, h2, h3, .modal-title { font-family: 'Montserrat', sans-serif; }
 
-        /* Google Translate Widget Custom Styling to Integrate Seamlessly */
+        /* Google Translate Widget Integration */
         .goog-te-banner-frame.skiptranslate { display: none !important; }
         body { top: 0px !important; }
         #google_translate_element { margin-right: 15px; }
@@ -29,13 +29,11 @@
             border: 1px solid rgba(255,255,255,0.2) !important;
             padding: 5px 10px !important;
             border-radius: 50px !important;
-            color: white !important;
         }
         .goog-te-gadget-simple .goog-te-menu-value span { color: white !important; margin-right: 5px; }
 
         /* HERO STYLING */
         .hero-section {
-            /* 2. Background Image - Publicly Accessible via Unsplash */
             background: linear-gradient(135deg, rgba(36, 52, 68, 0.9) 0%, rgba(22, 160, 133, 0.8) 100%), 
                         url('https://images.unsplash.com/photo-1493946740624-75b8ba718580?q=80&w=2000&auto=format&fit=crop');
             background-size: cover;
@@ -47,12 +45,10 @@
         .illustration-img {
             border-radius: 20px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            transition: transform 0.5s ease;
             max-height: 450px;
             width: 100%;
             object-fit: cover;
         }
-        .illustration-img:hover { transform: translateY(-10px); }
 
         /* FEATURE CARD STYLING */
         .feature-card {
@@ -91,7 +87,6 @@
         /* Modal Form Styling */
         .modal-content { border-radius: 20px; overflow: hidden; }
         .form-control { border-radius: 10px; padding: 12px; border: 1px solid #e1e1e1; }
-        .form-control:focus { border-color: var(--primary-teal); box-shadow: 0 0 0 0.25rem rgba(22, 160, 133, 0.1); }
         .fw-600 { font-weight: 600; }
     </style>
 </head>
@@ -111,7 +106,6 @@
                     <li class="nav-item me-3" id="google_translate_element"></li>
                     
                     <li class="nav-item"><a class="nav-link" href="#solutions">Solutions</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
                     
                     <li class="nav-item">
                         <a class="btn btn-success ms-lg-3 px-4 rounded-pill" href="#" data-bs-toggle="modal" data-bs-target="#joinModal">
@@ -123,6 +117,13 @@
         </div>
     </nav>
 
+    <?php if (session()->getFlashdata('success')) : ?>
+        <div class="alert alert-success alert-dismissible fade show container mt-3" role="alert">
+            <?= session()->getFlashdata('success') ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php endif; ?>
+
     <header class="hero-section">
         <div class="container">
             <div class="row align-items-center">
@@ -131,7 +132,6 @@
                     <p class="lead mb-5 opacity-90">EcoTrace helps local exporters verify supply chains and carbon footprints to meet international environmental standards with ease and transparency.</p>
                     <div class="d-grid d-md-block gap-3">
                         <a href="#solutions" class="btn btn-warning btn-lg fw-bold px-5 py-3 shadow rounded-pill me-md-3">Start Free Audit</a>
-                        <a href="#" class="btn btn-outline-light btn-lg px-5 py-3 rounded-pill">Watch Demo</a>
                     </div>
                 </div>
                 <div class="col-lg-6 mt-5 mt-lg-0">
@@ -179,23 +179,24 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0 shadow-lg">
                 <div class="modal-header bg-dark text-white p-4">
-                    <h5 class="modal-title fw-bold" id="joinModalLabel">Request Invitation</h5>
+                    <h5 class="modal-title fw-bold" id="joinModalLabel text-white">Request Invitation</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-4 p-md-5">
                     <p class="text-muted mb-4">Leave your details and our team will send you an exclusive invitation code to join the EcoTrace ecosystem.</p>
-                    <form id="registrationForm">
-                        <div class="mb-3">
+                    
+                    <form action="<?= base_url('submit-request') ?>" method="post">
+                        <?= csrf_field() ?> <div class="mb-3">
                             <label class="form-label fw-600">Full Name</label>
-                            <input type="text" class="form-control" placeholder="Murni Agustina" required>
+                            <input type="text" name="name" class="form-control" placeholder="Murni Agustina" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label fw-600">Email Address</label>
-                            <input type="email" class="form-control" placeholder="murni@example.com" required>
+                            <input type="email" name="email" class="form-control" placeholder="murni@example.com" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label fw-600">Phone Number</label>
-                            <input type="tel" class="form-control" placeholder="+62 812..." required>
+                            <input type="tel" name="phone" class="form-control" placeholder="+62 812..." required>
                         </div>
                         <div class="d-grid mt-4">
                             <button type="submit" class="btn btn-success btn-lg fw-bold rounded-pill shadow">Submit Request</button>
@@ -232,23 +233,6 @@
         }
     </script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-    <script>
-        document.getElementById('registrationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // For now, show a thank you message. In a real application, this is where you'd send data to your server.
-            alert('Thank you, Murni! Your invitation request has been sent. We will contact you soon.');
-            
-            // Automatically close the modal after submission
-            var modalElement = document.getElementById('joinModal');
-            var modal = bootstrap.Modal.getInstance(modalElement);
-            modal.hide();
-            
-            // Reset the form fields
-            this.reset();
-        });
-    </script>
 
 </body>
 </html>
