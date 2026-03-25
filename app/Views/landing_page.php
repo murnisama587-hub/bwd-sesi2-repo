@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,29 +14,47 @@
             --primary-teal: #16a085;
             --dark-navy: #243444;
             --mint-bg: #f0fcf8;
+            --accent-gold: #f39c12;
         }
 
-        body { font-family: 'Open Sans', sans-serif; color: var(--dark-navy); }
-        h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
+        body { font-family: 'Open Sans', sans-serif; color: var(--dark-navy); overflow-x: hidden; }
+        h1, h2, h3, .modal-title { font-family: 'Montserrat', sans-serif; }
+
+        /* Google Translate Widget Custom Styling to Integrate Seamlessly */
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        body { top: 0px !important; }
+        #google_translate_element { margin-right: 15px; }
+        .goog-te-gadget-simple {
+            background-color: transparent !important;
+            border: 1px solid rgba(255,255,255,0.2) !important;
+            padding: 5px 10px !important;
+            border-radius: 50px !important;
+            color: white !important;
+        }
+        .goog-te-gadget-simple .goog-te-menu-value span { color: white !important; margin-right: 5px; }
 
         /* HERO STYLING */
         .hero-section {
-            background: linear-gradient(135deg, rgba(22, 160, 133, 0.9) 0%, rgba(26, 188, 156, 0.8) 100%), 
-                        url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=2000');
+            /* 2. Background Image - Publicly Accessible via Unsplash */
+            background: linear-gradient(135deg, rgba(36, 52, 68, 0.9) 0%, rgba(22, 160, 133, 0.8) 100%), 
+                        url('https://images.unsplash.com/photo-1493946740624-75b8ba718580?q=80&w=2000&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             color: white;
-            padding: 100px 0;
+            padding: 120px 0;
         }
 
         .illustration-img {
             border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
             transition: transform 0.5s ease;
+            max-height: 450px;
+            width: 100%;
+            object-fit: cover;
         }
-        .illustration-img:hover { transform: scale(1.03); }
+        .illustration-img:hover { transform: translateY(-10px); }
 
-        /* CARD STYLING */
+        /* FEATURE CARD STYLING */
         .feature-card {
             padding: 40px;
             border: none;
@@ -44,6 +62,7 @@
             background: white;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
+            height: 100%;
         }
         .feature-card:hover {
             transform: translateY(-10px);
@@ -58,9 +77,22 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
+            margin: 0 auto 25px;
             color: var(--primary-teal);
+            font-size: 2rem;
         }
+
+        .btn-warning {
+            background-color: var(--accent-gold);
+            border: none;
+            color: white !important;
+        }
+        
+        /* Modal Form Styling */
+        .modal-content { border-radius: 20px; overflow: hidden; }
+        .form-control { border-radius: 10px; padding: 12px; border: 1px solid #e1e1e1; }
+        .form-control:focus { border-color: var(--primary-teal); box-shadow: 0 0 0 0.25rem rgba(22, 160, 133, 0.1); }
+        .fw-600 { font-weight: 600; }
     </style>
 </head>
 <body>
@@ -68,10 +100,24 @@
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: var(--dark-navy);">
         <div class="container">
             <a class="navbar-brand fw-bold" href="#"><i class="fa-solid fa-leaf text-success me-2"></i>EcoTrace.io</a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#produk">Solutions</a></li>
-                    <li class="nav-item"><a class="btn btn-success ms-lg-3 px-4" href="#kontak">Join Now</a></li>
+                <ul class="navbar-nav ms-auto align-items-center">
+                    
+                    <li class="nav-item me-3" id="google_translate_element"></li>
+                    
+                    <li class="nav-item"><a class="nav-link" href="#solutions">Solutions</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                    
+                    <li class="nav-item">
+                        <a class="btn btn-success ms-lg-3 px-4 rounded-pill" href="#" data-bs-toggle="modal" data-bs-target="#joinModal">
+                            Join Ecosystem
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -81,56 +127,128 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 text-center text-lg-start">
-                    <h1 class="display-3 fw-800 mb-4">Empowering Local Brands for <span class="text-warning">Global Trust.</span></h1>
-                    <p class="lead mb-5 opacity-90">EcoTrace membantu eksportir lokal memverifikasi rantai pasok dan jejak karbon agar produk kamu lolos standar internasional dengan mudah.</p>
-                    <a href="#kontak" class="btn btn-warning btn-lg fw-bold px-5 py-3 shadow rounded-pill">Start Free Audit</a>
+                    <h1 class="display-3 fw-bold mb-4">Empowering Local Brands for <span style="color: var(--accent-gold);">Global Trust.</span></h1>
+                    <p class="lead mb-5 opacity-90">EcoTrace helps local exporters verify supply chains and carbon footprints to meet international environmental standards with ease and transparency.</p>
+                    <div class="d-grid d-md-block gap-3">
+                        <a href="#solutions" class="btn btn-warning btn-lg fw-bold px-5 py-3 shadow rounded-pill me-md-3">Start Free Audit</a>
+                        <a href="#" class="btn btn-outline-light btn-lg px-5 py-3 rounded-pill">Watch Demo</a>
+                    </div>
                 </div>
                 <div class="col-lg-6 mt-5 mt-lg-0">
-                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2923216?auto=format&fit=crop&q=80&w=800" alt="Global Business" class="img-fluid illustration-img">
+                    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=800" alt="Global Supply Chain" class="img-fluid illustration-img">
                 </div>
             </div>
         </div>
     </header>
 
-    <main id="produk" class="py-5 bg-light">
+    <main id="solutions" class="py-5 bg-light">
         <div class="container py-5">
             <div class="text-center mb-5">
-                <h2 class="display-5">Why EcoTrace?</h2>
+                <h2 class="display-5 fw-bold">Why Choose EcoTrace?</h2>
+                <p class="text-muted">Bridging the gap between local production and global compliance.</p>
                 <div class="mx-auto bg-success" style="height: 4px; width: 60px;"></div>
             </div>
+            
             <div class="row g-4 text-center">
                 <div class="col-md-4">
-                    <div class="feature-card h-100">
-                        <div class="icon-circle"><i class="fa-solid fa-earth-asia fa-2x"></i></div>
-                        <h3>EUDR Compliance</h3>
-                        <p class="text-muted">Pastikan produk kamu bebas deforestasi dan siap masuk pasar Uni Eropa dengan pemetaan GPS presisi.</p>
+                    <div class="feature-card">
+                        <div class="icon-circle"><i class="fa-solid fa-globe-americas"></i></div>
+                        <h3 class="h4 fw-bold">EUDR Compliance</h3>
+                        <p class="text-muted">Ensure your products are deforestation-free and ready for EU markets with high-precision GPS mapping.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="feature-card h-100">
-                        <div class="icon-circle"><i class="fa-solid fa-chart-line fa-2x"></i></div>
-                        <h3>Carbon Reporting</h3>
-                        <p class="text-muted">Hitung jejak karbon dari ladang hingga pelabuhan secara otomatis dan transparan.</p>
+                    <div class="feature-card">
+                        <div class="icon-circle"><i class="fa-solid fa-seedling"></i></div>
+                        <h3 class="h4 fw-bold">Carbon Reporting</h3>
+                        <p class="text-muted">Automatically calculate carbon footprints from farm to port using verified international frameworks.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="feature-card h-100">
-                        <div class="icon-circle"><i class="fa-solid fa-fingerprint fa-2x"></i></div>
-                        <h3>Batch Integrity</h3>
-                        <p class="text-muted">Setiap produk memiliki identitas digital unik (QR Code) untuk menjamin keaslian di mata pembeli global.</p>
+                    <div class="feature-card">
+                        <div class="icon-circle"><i class="fa-solid fa-qrcode"></i></div>
+                        <h3 class="h4 fw-bold">Digital Passport</h3>
+                        <p class="text-muted">Provide each batch with a unique QR code to guarantee authenticity and traceability for global buyers.</p>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
+    <div class="modal fade" id="joinModal" tabindex="-1" aria-labelledby="joinModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header bg-dark text-white p-4">
+                    <h5 class="modal-title fw-bold" id="joinModalLabel">Request Invitation</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 p-md-5">
+                    <p class="text-muted mb-4">Leave your details and our team will send you an exclusive invitation code to join the EcoTrace ecosystem.</p>
+                    <form id="registrationForm">
+                        <div class="mb-3">
+                            <label class="form-label fw-600">Full Name</label>
+                            <input type="text" class="form-control" placeholder="Murni Agustina" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-600">Email Address</label>
+                            <input type="email" class="form-control" placeholder="murni@example.com" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-600">Phone Number</label>
+                            <input type="tel" class="form-control" placeholder="+62 812..." required>
+                        </div>
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-success btn-lg fw-bold rounded-pill shadow">Submit Request</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer class="py-5 text-white" style="background-color: var(--dark-navy);">
         <div class="container text-center">
             <h3 class="mb-4">EcoTrace.io</h3>
-            <p class="opacity-50">&copy; 2026 Murni Agustina Andini - 25120100018. Cakrawala University.</p>
+            <div class="social-links mb-4">
+                <a href="#" class="text-white mx-2"><i class="fa-brands fa-linkedin fa-xl"></i></a>
+                <a href="#" class="text-white mx-2"><i class="fa-brands fa-twitter fa-xl"></i></a>
+                <a href="#" class="text-white mx-2"><i class="fa-brands fa-instagram fa-xl"></i></a>
+            </div>
+            <hr class="opacity-25 my-4">
+            <p class="opacity-50 small">&copy; 2026 Murni Agustina Andini - 25120100018. Cakrawala University.</p>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'id,en,zh-CN,ja,fr,de',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // For now, show a thank you message. In a real application, this is where you'd send data to your server.
+            alert('Thank you, Murni! Your invitation request has been sent. We will contact you soon.');
+            
+            // Automatically close the modal after submission
+            var modalElement = document.getElementById('joinModal');
+            var modal = bootstrap.Modal.getInstance(modalElement);
+            modal.hide();
+            
+            // Reset the form fields
+            this.reset();
+        });
+    </script>
+
 </body>
 </html>
