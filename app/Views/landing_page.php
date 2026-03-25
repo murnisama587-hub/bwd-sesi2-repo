@@ -1,167 +1,136 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <!-- META TAGS: Sangat penting untuk SEO dan Mobile-First -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Landing page MVP untuk produk bisnis digital. Dibangun dengan Bootstrap 5 dan HTML5 Semantik untuk performa SEO maksimal.">
-    
-    <title>MVP Bisnis Digital | BWD Sesi 2</title>
+    <title>EcoTrace.io | Global Export Transparency</title>
 
-    <!-- BOOTSTRAP 5 CDN: Mengimpor "Rak Etalase Dinamis" tanpa perlu menulis CSS manual -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- FONT & ICONS: Meningkatkan UI/UX Bisnis -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
-        /* CSS KUSTOM MINIMALIS: Praktik CSS Box Model (Margin, Border, Padding) */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8f9fa;
+        :root {
+            --primary-teal: #16a085;
+            --dark-navy: #243444;
+            --mint-bg: #f0fcf8;
         }
 
-        h1, h2, h3 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
+        body { font-family: 'Open Sans', sans-serif; color: var(--dark-navy); }
+        h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
+
+        /* HERO STYLING */
+        .hero-section {
+            background: linear-gradient(135deg, rgba(22, 160, 133, 0.9) 0%, rgba(26, 188, 156, 0.8) 100%), 
+                        url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=2000');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
         }
 
-        .box-model-demo {
-            padding: 30px; /* Jarak dari konten ke dinding kardus (dalam) */
-            border: 2px solid #0d6efd; /* Dinding kardus */
-            margin-bottom: 20px; /* Jarak antar kardus (luar) */
-            border-radius: 12px;
-            background-color: white;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .illustration-img {
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            transition: transform 0.5s ease;
+        }
+        .illustration-img:hover { transform: scale(1.03); }
+
+        /* CARD STYLING */
+        .feature-card {
+            padding: 40px;
+            border: none;
+            border-radius: 20px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(22, 160, 133, 0.15);
         }
 
-        .box-model-demo:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        .icon-circle {
+            width: 80px;
+            height: 80px;
+            background: var(--mint-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary-teal);
         }
     </style>
 </head>
 <body>
 
-    <!-- SEMANTIC TAG: <nav> memberi tahu Google bahwa ini adalah menu navigasi utama -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: var(--dark-navy);">
         <div class="container">
-            <a class="navbar-brand" href="#"><i class="fa-solid fa-rocket text-primary"></i> StartupKu</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-toggle="target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <a class="navbar-brand fw-bold" href="#"><i class="fa-solid fa-leaf text-success me-2"></i>EcoTrace.io</a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#produk">Produk</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#kontak">Hubungi Kami</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#produk">Solutions</a></li>
+                    <li class="nav-item"><a class="btn btn-success ms-lg-3 px-4" href="#kontak">Join Now</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- SEMANTIC TAG: <header> sebagai area "Hero/Papan Reklame" utama web -->
-    <header class="bg-primary text-white text-center py-5">
-        <div class="container py-5">
-            <h1 class="display-4">Solusi Digital untuk Bisnis Anda</h1>
-            <p class="lead mt-3">Dibangun dengan Semantik HTML5 dan Mobile-First Design untuk performa maksimal.</p>
-            <a href="#kontak" class="btn btn-light btn-lg mt-3 fw-bold text-primary">Mulai Sekarang</a>
+    <header class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 text-center text-lg-start">
+                    <h1 class="display-3 fw-800 mb-4">Empowering Local Brands for <span class="text-warning">Global Trust.</span></h1>
+                    <p class="lead mb-5 opacity-90">EcoTrace membantu eksportir lokal memverifikasi rantai pasok dan jejak karbon agar produk kamu lolos standar internasional dengan mudah.</p>
+                    <a href="#kontak" class="btn btn-warning btn-lg fw-bold px-5 py-3 shadow rounded-pill">Start Free Audit</a>
+                </div>
+                <div class="col-lg-6 mt-5 mt-lg-0">
+                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2923216?auto=format&fit=crop&q=80&w=800" alt="Global Business" class="img-fluid illustration-img">
+                </div>
+            </div>
         </div>
     </header>
 
-    <!-- SEMANTIC TAG: <main> membungkus seluruh konten inti/jualan utama -->
-    <main>
-        
-        <!-- SEMANTIC TAG: <section> membagi area web menjadi bagian-bagian logis -->
-        <section id="produk" class="container my-5 py-4">
+    <main id="produk" class="py-5 bg-light">
+        <div class="container py-5">
             <div class="text-center mb-5">
-                <h2>Layanan Kami</h2>
-                <p class="text-muted">Menggunakan Bootstrap Grid System (12 Kolom)</p>
+                <h2 class="display-5">Why EcoTrace?</h2>
+                <div class="mx-auto bg-success" style="height: 4px; width: 60px;"></div>
             </div>
-
-            <!-- BOOTSTRAP GRID (Baris) -->
-            <div class="row g-4">
-                
-                <!-- BOOTSTRAP GRID (Kolom): 
-                     col-12 = Ambil 12 kolom penuh di HP (Mobile First)
-                     col-md-4 = Ambil 4 kolom di layar medium/Laptop (12/4 = 3 kotak sejajar) 
-                -->
-                <article class="col-12 col-md-4">
-                    <div class="box-model-demo h-100 text-center">
-                        <i class="fa-solid fa-magnifying-glass-chart fa-3x text-primary mb-3"></i>
-                        <h3>SEO Audit</h3>
-                        <p class="text-muted">Tag semantik kami memastikan Google mencintai website bisnis Anda.</p>
+            <div class="row g-4 text-center">
+                <div class="col-md-4">
+                    <div class="feature-card h-100">
+                        <div class="icon-circle"><i class="fa-solid fa-earth-asia fa-2x"></i></div>
+                        <h3>EUDR Compliance</h3>
+                        <p class="text-muted">Pastikan produk kamu bebas deforestasi dan siap masuk pasar Uni Eropa dengan pemetaan GPS presisi.</p>
                     </div>
-                </article>
-
-                <article class="col-12 col-md-4">
-                    <div class="box-model-demo h-100 text-center">
-                        <i class="fa-solid fa-mobile-screen-button fa-3x text-primary mb-3"></i>
-                        <h3>Mobile-First</h3>
-                        <p class="text-muted">Layout responsif yang otomatis beradaptasi dari HP hingga layar Desktop.</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card h-100">
+                        <div class="icon-circle"><i class="fa-solid fa-chart-line fa-2x"></i></div>
+                        <h3>Carbon Reporting</h3>
+                        <p class="text-muted">Hitung jejak karbon dari ladang hingga pelabuhan secara otomatis dan transparan.</p>
                     </div>
-                </article>
-
-                <article class="col-12 col-md-4">
-                    <div class="box-model-demo h-100 text-center">
-                        <i class="fa-solid fa-shield-halved fa-3x text-primary mb-3"></i>
-                        <h3>Data Security</h3>
-                        <p class="text-muted">Pengumpulan *leads* yang aman menggunakan validasi form modern.</p>
-                    </div>
-                </article>
-
-            </div>
-        </section>
-
-        <!-- SECURE FORM SECTION -->
-        <section id="kontak" class="bg-white py-5 border-top">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-12 col-lg-6">
-                        <div class="text-center mb-4">
-                            <h2>Dapatkan Proposal Gratis</h2>
-                            <p class="text-muted">Praktik HTML5 Secure Form Input (Sanitasi Data)</p>
-                        </div>
-
-                        <!-- Form Bisnis: Akan dihubungkan ke PHP/CodeIgniter di pertemuan UAS -->
-                        <form action="#" method="POST" class="p-4 border rounded shadow-sm bg-light">
-                            
-                            <div class="mb-3">
-                                <label for="namaLengkap" class="form-label fw-bold">Nama Lengkap</label>
-                                <!-- INPUT TEXT BIASA -->
-                                <input type="text" class="form-control" id="namaLengkap" placeholder="Cth: Budi Santoso" required>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="emailBisnis" class="form-label fw-bold">Email Bisnis</label>
-                                <!-- SECURE INPUT: type="email" memaksa user memakai format @domain.com -->
-                                <input type="email" class="form-control" id="emailBisnis" placeholder="budi@perusahaan.com" required>
-                                <div class="form-text">Kami tidak akan pernah membagikan email Anda (Anti-Spam).</div>
-                            </div>
-
-                            <div class="mb-4">
-                                <label for="nomorTelepon" class="form-label fw-bold">Nomor WhatsApp</label>
-                                <!-- SECURE INPUT: type="tel" otomatis memunculkan Numpad (angka) di HP -->
-                                <input type="tel" class="form-control" id="nomorTelepon" placeholder="08123456789" required>
-                            </div>
-
-                            <button type="submit" class="btn btn-primary w-100 fw-bold py-2">Kirim Permintaan <i class="fa-solid fa-paper-plane ms-1"></i></button>
-                        </form>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card h-100">
+                        <div class="icon-circle"><i class="fa-solid fa-fingerprint fa-2x"></i></div>
+                        <h3>Batch Integrity</h3>
+                        <p class="text-muted">Setiap produk memiliki identitas digital unik (QR Code) untuk menjamin keaslian di mata pembeli global.</p>
                     </div>
                 </div>
             </div>
-        </section>
-
+        </div>
     </main>
 
-    <!-- SEMANTIC TAG: <footer> area penutup yang memberitahu bot ini adalah akhir dokumen -->
-    <footer class="bg-dark text-light text-center py-4">
-        <div class="container">
-            <p class="mb-0">&copy; 2026 Cakrawala Digital Business. <strong>BWD04 - Sesi 2</strong>.</p>
+    <footer class="py-5 text-white" style="background-color: var(--dark-navy);">
+        <div class="container text-center">
+            <h3 class="mb-4">EcoTrace.io</h3>
+            <p class="opacity-50">&copy; 2026 Murni Agustina Andini - 25120100018. Cakrawala University.</p>
         </div>
     </footer>
 
-    <!-- BOOTSTRAP JS BUNDLE: Diperlukan untuk interaktivitas komponen seperti Navbar Mobile -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
