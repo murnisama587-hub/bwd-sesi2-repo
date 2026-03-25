@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <!-- META TAGS: Sangat penting untuk SEO dan Mobile-First -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Landing page MVP untuk produk bisnis digital. Dibangun dengan Bootstrap 5 dan HTML5 Semantik untuk performa SEO maksimal.">
+    <meta name="description" content="EcoTrace.io MVP Landing Page - Memberdayakan produk lokal dengan transparansi end-to-end. Memenuhi standar internasional dan meraih kepercayaan pembeli global.">
     
-    <title>MVP Bisnis Digital | BWD Sesi 2</title>
+    <title>EcoTrace.io | Global Export Transparency | BWD Sesi 2</title>
 
-    <!-- BOOTSTRAP 5 CDN: Mengimpor "Rak Etalase Dinamis" tanpa perlu menulis CSS manual -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     
-    <!-- FONT & ICONS: Meningkatkan UI/UX Bisnis -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
-        /* CSS KUSTOM MINIMALIS: Praktik CSS Box Model (Margin, Border, Padding) */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f8f9fa;
@@ -28,9 +25,9 @@
         }
 
         .box-model-demo {
-            padding: 30px; /* Jarak dari konten ke dinding kardus (dalam) */
+            padding: 30px; /* Jarak dalam kardus */
             border: 2px solid #0d6efd; /* Dinding kardus */
-            margin-bottom: 20px; /* Jarak antar kardus (luar) */
+            margin-bottom: 20px; /* Jarak luar kardus */
             border-radius: 12px;
             background-color: white;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -44,13 +41,16 @@
 </head>
 <body>
 
-    <!-- SEMANTIC TAG: <nav> memberi tahu Google bahwa ini adalah menu navigasi utama -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="#"><i class="fa-solid fa-rocket text-primary"></i> StartupKu</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-toggle="target="#navbarNav">
+            <a class="navbar-brand fw-bold" href="#">
+                <i class="fa-solid fa-rocket text-primary ms-1"></i>EcoTrace.io
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#produk">Produk</a></li>
@@ -60,92 +60,87 @@
         </div>
     </nav>
 
-    <!-- SEMANTIC TAG: <header> sebagai area "Hero/Papan Reklame" utama web -->
     <header class="bg-primary text-white text-center py-5">
         <div class="container py-5">
-            <h1 class="display-4">Solusi Digital untuk Bisnis Anda</h1>
-            <p class="lead mt-3">Dibangun dengan Semantik HTML5 dan Mobile-First Design untuk performa maksimal.</p>
-            <a href="#kontak" class="btn btn-light btn-lg mt-3 fw-bold text-primary">Mulai Sekarang</a>
+            <h1 class="display-4">The Digital Identity for Global Exports</h1>
+            <p class="lead mt-3">Empower your local products with end-to-end transparency. Meet international standards and gain trust from global buyers.</p>
+            <a href="#kontak" class="btn btn-light btn-lg mt-3 fw-bold text-primary">Get Export Ready</a>
         </div>
     </header>
 
-    <!-- SEMANTIC TAG: <main> membungkus seluruh konten inti/jualan utama -->
     <main>
         
-        <!-- SEMANTIC TAG: <section> membagi area web menjadi bagian-bagian logis -->
         <section id="produk" class="container my-5 py-4">
             <div class="text-center mb-5">
-                <h2>Layanan Kami</h2>
-                <p class="text-muted">Menggunakan Bootstrap Grid System (12 Kolom)</p>
+                <h2>Our Export Solutions</h2>
+                <p class="text-muted">Helping local producers meet international sustainability standards through verified data and digital transparency.</p>
             </div>
 
-            <!-- BOOTSTRAP GRID (Baris) -->
             <div class="row g-4">
                 
-                <!-- BOOTSTRAP GRID (Kolom): 
-                     col-12 = Ambil 12 kolom penuh di HP (Mobile First)
-                     col-md-4 = Ambil 4 kolom di layar medium/Laptop (12/4 = 3 kotak sejajar) 
-                -->
                 <article class="col-12 col-md-4">
                     <div class="box-model-demo h-100 text-center">
                         <i class="fa-solid fa-magnifying-glass-chart fa-3x text-primary mb-3"></i>
-                        <h3>SEO Audit</h3>
-                        <p class="text-muted">Tag semantik kami memastikan Google mencintai website bisnis Anda.</p>
+                        <h3>Origin Mapping</h3>
+                        <p class="text-muted">Track raw materials to their exact GPS coordinates, ensuring compliance with global deforestation-free regulations.</p>
                     </div>
                 </article>
 
                 <article class="col-12 col-md-4">
                     <div class="box-model-demo h-100 text-center">
                         <i class="fa-solid fa-mobile-screen-button fa-3x text-primary mb-3"></i>
-                        <h3>Mobile-First</h3>
-                        <p class="text-muted">Layout responsif yang otomatis beradaptasi dari HP hingga layar Desktop.</p>
+                        <h3>Carbon Intelligence</h3>
+                        <p class="text-muted">Automatically calculate and report the carbon footprint of your products from factory to international shipping.</p>
                     </div>
                 </article>
 
                 <article class="col-12 col-md-4">
                     <div class="box-model-demo h-100 text-center">
                         <i class="fa-solid fa-shield-halved fa-3x text-primary mb-3"></i>
-                        <h3>Data Security</h3>
-                        <p class="text-muted">Pengumpulan *leads* yang aman menggunakan validasi form modern.</p>
+                        <h3>Digital Integrity</h3>
+                        <p class="text-muted">Secure every batch with a unique QR code, allowing international buyers to verify product authenticity instantly.</p>
                     </div>
                 </article>
 
             </div>
         </section>
 
-        <!-- SECURE FORM SECTION -->
         <section id="kontak" class="bg-white py-5 border-top">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-12 col-lg-6">
                         <div class="text-center mb-4">
-                            <h2>Dapatkan Proposal Gratis</h2>
-                            <p class="text-muted">Praktik HTML5 Secure Form Input (Sanitasi Data)</p>
+                            <h2>Ready to Scale Your Exports?</h2>
+                            <p class="text-muted">Join our exclusive program for sustainable exporters. Get your first transparency report and reach global markets.</p>
                         </div>
 
-                        <!-- Form Bisnis: Akan dihubungkan ke PHP/CodeIgniter di pertemuan UAS -->
                         <form action="#" method="POST" class="p-4 border rounded shadow-sm bg-light">
                             
                             <div class="mb-3">
-                                <label for="namaLengkap" class="form-label fw-bold">Nama Lengkap</label>
-                                <!-- INPUT TEXT BIASA -->
-                                <input type="text" class="form-control" id="namaLengkap" placeholder="Cth: Budi Santoso" required>
+                                <label for="namaLengkap" class="form-label fw-bold">Company Name</label>
+                                <input type="text" class="form-control" id="namaLengkap" placeholder="Contoh: PT Agro Global Indonesia" required>
                             </div>
 
                             <div class="mb-3">
-                                <label for="emailBisnis" class="form-label fw-bold">Email Bisnis</label>
-                                <!-- SECURE INPUT: type="email" memaksa user memakai format @domain.com -->
-                                <input type="email" class="form-control" id="emailBisnis" placeholder="budi@perusahaan.com" required>
-                                <div class="form-text">Kami tidak akan pernah membagikan email Anda (Anti-Spam).</div>
+                                <label for="emailBisnis" class="form-label fw-bold">Business Email</label>
+                                <input type="email" class="form-control" id="emailBisnis" placeholder="RieeFiee@ecotrace.ac.id" required>
+                                <div class="form-text">We value your privacy. Your email is safe with us.</div>
                             </div>
 
                             <div class="mb-4">
-                                <label for="nomorTelepon" class="form-label fw-bold">Nomor WhatsApp</label>
-                                <!-- SECURE INPUT: type="tel" otomatis memunculkan Numpad (angka) di HP -->
-                                <input type="tel" class="form-control" id="nomorTelepon" placeholder="08123456789" required>
+                                <label for="negara" class="form-label fw-bold">Export Destination</label>
+                                <select class="form-control" id="negara" name="negara" required>
+                                    <option value="" disabled selected>Select destination (EU/US/Asia)</option>
+                                    <option value="European Union">European Union (EU)</option>
+                                    <option value="United States">United States (US)</option>
+                                    <option value="Asia Pacific">Asia Pacific</option>
+                                    <option value="Other">Other Regions</option>
+                                </select>
                             </div>
 
-                            <button type="submit" class="btn btn-primary w-100 fw-bold py-2">Kirim Permintaan <i class="fa-solid fa-paper-plane ms-1"></i></button>
+                            <button type="submit" class="btn btn-primary w-100 fw-bold py-2">
+                                Request Early Access <i class="fa-solid fa-paper-plane ms-2"></i>
+                            </button>
                         </form>
                     </div>
                 </div>
@@ -154,14 +149,12 @@
 
     </main>
 
-    <!-- SEMANTIC TAG: <footer> area penutup yang memberitahu bot ini adalah akhir dokumen -->
     <footer class="bg-dark text-light text-center py-4">
         <div class="container">
-            <p class="mb-0">&copy; 2026 Cakrawala Digital Business. <strong>BWD04 - Sesi 2</strong>.</p>
+            <p class="mb-0">&copy; Murni Agustina Andini-25120100018. <strong>BWD04 - Sesi 2</strong>.</p>
         </div>
     </footer>
 
-    <!-- BOOTSTRAP JS BUNDLE: Diperlukan untuk interaktivitas komponen seperti Navbar Mobile -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
