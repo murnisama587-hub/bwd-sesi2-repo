@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
+     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="EcoTrace.io MVP Landing Page - Memberdayakan produk lokal dengan transparansi end-to-end. Memenuhi standar internasional dan meraih kepercayaan pembeli global.">
     
