@@ -1,160 +1,238 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
      <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="EcoTrace.io MVP Landing Page - Memberdayakan produk lokal dengan transparansi end-to-end. Memenuhi standar internasional dan meraih kepercayaan pembeli global.">
-    
-    <title>EcoTrace.io | Global Export Transparency | BWD Sesi 2</title>
+    <title>EcoTrace.io | Global Export Transparency</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8f9fa;
+        :root {
+            --primary-teal: #16a085;
+            --dark-navy: #243444;
+            --mint-bg: #f0fcf8;
+            --accent-gold: #f39c12;
         }
 
-        h1, h2, h3 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
+        body { font-family: 'Open Sans', sans-serif; color: var(--dark-navy); overflow-x: hidden; }
+        h1, h2, h3, .modal-title { font-family: 'Montserrat', sans-serif; }
+
+        /* Google Translate Widget Integration */
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        body { top: 0px !important; }
+        #google_translate_element { margin-right: 15px; }
+        .goog-te-gadget-simple {
+            background-color: transparent !important;
+            border: 1px solid rgba(255,255,255,0.2) !important;
+            padding: 5px 10px !important;
+            border-radius: 50px !important;
+        }
+        .goog-te-gadget-simple .goog-te-menu-value span { color: white !important; margin-right: 5px; }
+
+        /* HERO STYLING */
+        .hero-section {
+            background: linear-gradient(135deg, rgba(36, 52, 68, 0.9) 0%, rgba(22, 160, 133, 0.8) 100%), 
+                        url('https://images.unsplash.com/photo-1493946740624-75b8ba718580?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 0;
         }
 
-        .box-model-demo {
-            padding: 30px; /* Jarak dalam kardus */
-            border: 2px solid #0d6efd; /* Dinding kardus */
-            margin-bottom: 20px; /* Jarak luar kardus */
-            border-radius: 12px;
-            background-color: white;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .illustration-img {
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            max-height: 450px;
+            width: 100%;
+            object-fit: cover;
         }
 
-        .box-model-demo:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        /* FEATURE CARD STYLING */
+        .feature-card {
+            padding: 40px;
+            border: none;
+            border-radius: 20px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            height: 100%;
         }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(22, 160, 133, 0.15);
+        }
+
+        .icon-circle {
+            width: 80px;
+            height: 80px;
+            background: var(--mint-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: var(--primary-teal);
+            font-size: 2rem;
+        }
+
+        .btn-warning {
+            background-color: var(--accent-gold);
+            border: none;
+            color: white !important;
+        }
+        
+        /* Modal Form Styling */
+        .modal-content { border-radius: 20px; overflow: hidden; }
+        .form-control { border-radius: 10px; padding: 12px; border: 1px solid #e1e1e1; }
+        .fw-600 { font-weight: 600; }
     </style>
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: var(--dark-navy);">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#">
-                <i class="fa-solid fa-rocket text-primary ms-1"></i>EcoTrace.io
-            </a>
+            <a class="navbar-brand fw-bold" href="#"><i class="fa-solid fa-leaf text-success me-2"></i>EcoTrace.io</a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
+
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#produk">Produk</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#kontak">Hubungi Kami</a></li>
+                <ul class="navbar-nav ms-auto align-items-center">
+                    
+                    <li class="nav-item me-3" id="google_translate_element"></li>
+                    
+                    <li class="nav-item"><a class="nav-link" href="#solutions">Solutions</a></li>
+                    
+                    <li class="nav-item">
+                        <a class="btn btn-success ms-lg-3 px-4 rounded-pill" href="#" data-bs-toggle="modal" data-bs-target="#joinModal">
+                            Join Ecosystem
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <header class="bg-primary text-white text-center py-5">
-        <div class="container py-5">
-            <h1 class="display-4">The Digital Identity for Global Exports</h1>
-            <p class="lead mt-3">Empower your local products with end-to-end transparency. Meet international standards and gain trust from global buyers.</p>
-            <a href="#kontak" class="btn btn-light btn-lg mt-3 fw-bold text-primary">Get Export Ready</a>
+    <?php if (session()->getFlashdata('success')) : ?>
+        <div class="alert alert-success alert-dismissible fade show container mt-3" role="alert">
+            <?= session()->getFlashdata('success') ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php endif; ?>
+
+    <header class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 text-center text-lg-start">
+                    <h1 class="display-3 fw-bold mb-4">Empowering Local Brands for <span style="color: var(--accent-gold);">Global Trust.</span></h1>
+                    <p class="lead mb-5 opacity-90">EcoTrace helps local exporters verify supply chains and carbon footprints to meet international environmental standards with ease and transparency.</p>
+                    <div class="d-grid d-md-block gap-3">
+                        <a href="#solutions" class="btn btn-warning btn-lg fw-bold px-5 py-3 shadow rounded-pill me-md-3">Start Free Audit</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-5 mt-lg-0">
+                    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=800" alt="Global Supply Chain" class="img-fluid illustration-img">
+                </div>
+            </div>
         </div>
     </header>
 
-    <main>
-        
-        <section id="produk" class="container my-5 py-4">
+    <main id="solutions" class="py-5 bg-light">
+        <div class="container py-5">
             <div class="text-center mb-5">
-                <h2>Our Export Solutions</h2>
-                <p class="text-muted">Helping local producers meet international sustainability standards through verified data and digital transparency.</p>
+                <h2 class="display-5 fw-bold">Why Choose EcoTrace?</h2>
+                <p class="text-muted">Bridging the gap between local production and global compliance.</p>
+                <div class="mx-auto bg-success" style="height: 4px; width: 60px;"></div>
             </div>
-
-            <div class="row g-4">
-                
-                <article class="col-12 col-md-4">
-                    <div class="box-model-demo h-100 text-center">
-                        <i class="fa-solid fa-magnifying-glass-chart fa-3x text-primary mb-3"></i>
-                        <h3>Origin Mapping</h3>
-                        <p class="text-muted">Track raw materials to their exact GPS coordinates, ensuring compliance with global deforestation-free regulations.</p>
+            
+            <div class="row g-4 text-center">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="icon-circle"><i class="fa-solid fa-globe-americas"></i></div>
+                        <h3 class="h4 fw-bold">EUDR Compliance</h3>
+                        <p class="text-muted">Ensure your products are deforestation-free and ready for EU markets with high-precision GPS mapping.</p>
                     </div>
-                </article>
-
-                <article class="col-12 col-md-4">
-                    <div class="box-model-demo h-100 text-center">
-                        <i class="fa-solid fa-mobile-screen-button fa-3x text-primary mb-3"></i>
-                        <h3>Carbon Intelligence</h3>
-                        <p class="text-muted">Automatically calculate and report the carbon footprint of your products from factory to international shipping.</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="icon-circle"><i class="fa-solid fa-seedling"></i></div>
+                        <h3 class="h4 fw-bold">Carbon Reporting</h3>
+                        <p class="text-muted">Automatically calculate carbon footprints from farm to port using verified international frameworks.</p>
                     </div>
-                </article>
-
-                <article class="col-12 col-md-4">
-                    <div class="box-model-demo h-100 text-center">
-                        <i class="fa-solid fa-shield-halved fa-3x text-primary mb-3"></i>
-                        <h3>Digital Integrity</h3>
-                        <p class="text-muted">Secure every batch with a unique QR code, allowing international buyers to verify product authenticity instantly.</p>
-                    </div>
-                </article>
-
-            </div>
-        </section>
-
-        <section id="kontak" class="bg-white py-5 border-top">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-12 col-lg-6">
-                        <div class="text-center mb-4">
-                            <h2>Ready to Scale Your Exports?</h2>
-                            <p class="text-muted">Join our exclusive program for sustainable exporters. Get your first transparency report and reach global markets.</p>
-                        </div>
-
-                        <form action="#" method="POST" class="p-4 border rounded shadow-sm bg-light">
-                            
-                            <div class="mb-3">
-                                <label for="namaLengkap" class="form-label fw-bold">Company Name</label>
-                                <input type="text" class="form-control" id="namaLengkap" placeholder="Contoh: PT Agro Global Indonesia" required>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="emailBisnis" class="form-label fw-bold">Business Email</label>
-                                <input type="email" class="form-control" id="emailBisnis" placeholder="RieeFiee@ecotrace.ac.id" required>
-                                <div class="form-text">We value your privacy. Your email is safe with us.</div>
-                            </div>
-
-                            <div class="mb-4">
-                                <label for="negara" class="form-label fw-bold">Export Destination</label>
-                                <select class="form-control" id="negara" name="negara" required>
-                                    <option value="" disabled selected>Select destination (EU/US/Asia)</option>
-                                    <option value="European Union">European Union (EU)</option>
-                                    <option value="United States">United States (US)</option>
-                                    <option value="Asia Pacific">Asia Pacific</option>
-                                    <option value="Other">Other Regions</option>
-                                </select>
-                            </div>
-
-                            <button type="submit" class="btn btn-primary w-100 fw-bold py-2">
-                                Request Early Access <i class="fa-solid fa-paper-plane ms-2"></i>
-                            </button>
-                        </form>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="icon-circle"><i class="fa-solid fa-qrcode"></i></div>
+                        <h3 class="h4 fw-bold">Digital Passport</h3>
+                        <p class="text-muted">Provide each batch with a unique QR code to guarantee authenticity and traceability for global buyers.</p>
                     </div>
                 </div>
             </div>
-        </section>
-
+        </div>
     </main>
 
-    <footer class="bg-dark text-light text-center py-4">
-        <div class="container">
-            <p class="mb-0">&copy; Murni Agustina Andini-25120100018. <strong>BWD04 - Sesi 2</strong>.</p>
+    <div class="modal fade" id="joinModal" tabindex="-1" aria-labelledby="joinModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header bg-dark text-white p-4">
+                    <h5 class="modal-title fw-bold" id="joinModalLabel text-white">Request Invitation</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 p-md-5">
+                    <p class="text-muted mb-4">Leave your details and our team will send you an exclusive invitation code to join the EcoTrace ecosystem.</p>
+                    
+                    <form action="<?= base_url('submit-request') ?>" method="post">
+                        <?= csrf_field() ?> <div class="mb-3">
+                            <label class="form-label fw-600">Full Name</label>
+                            <input type="text" name="name" class="form-control" placeholder="Murni Agustina" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-600">Email Address</label>
+                            <input type="email" name="email" class="form-control" placeholder="murni@example.com" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-600">Phone Number</label>
+                            <input type="tel" name="phone" class="form-control" placeholder="+62 812..." required>
+                        </div>
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-success btn-lg fw-bold rounded-pill shadow">Submit Request</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="py-5 text-white" style="background-color: var(--dark-navy);">
+        <div class="container text-center">
+            <h3 class="mb-4">EcoTrace.io</h3>
+            <div class="social-links mb-4">
+                <a href="#" class="text-white mx-2"><i class="fa-brands fa-linkedin fa-xl"></i></a>
+                <a href="#" class="text-white mx-2"><i class="fa-brands fa-twitter fa-xl"></i></a>
+                <a href="#" class="text-white mx-2"><i class="fa-brands fa-instagram fa-xl"></i></a>
+            </div>
+            <hr class="opacity-25 my-4">
+            <p class="opacity-50 small">&copy; 2026 Murni Agustina Andini - 25120100018. Cakrawala University.</p>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'id,en,zh-CN,ja,fr,de',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </body>
 </html>

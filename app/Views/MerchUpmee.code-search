@@ -1,0 +1,10 @@
+# Query: StartupKu
+# ContextLines: 1
+
+1 result - 1 file
+
+app\Views\landing_page.php:
+  49          <div class="container">
+  50:             <a class="navbar-brand" href="#"><i class="fa-solid fa-rocket text-primary"></i>MerchUpmee</a>
+  51              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-toggle="target="#navbarNav">
+ 
